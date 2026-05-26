@@ -6,10 +6,9 @@
 
 from __future__ import annotations
 
+from src.app.plugin_system.api.action_api import clear_schema_cache
 from src.app.plugin_system.api.log_api import get_logger
 from src.app.plugin_system.base import BasePlugin, register_plugin
-
-from src.core.managers.action_manager import get_action_manager
 
 from .actions.schedule_thought import ScheduleThoughtAction
 from .actions.set_reply_wait import SetReplyWaitAction
@@ -87,9 +86,8 @@ class DFCKokoroBridgePlugin(BasePlugin):
         if guidance:
             schedule_parts.append(guidance)
         ScheduleThoughtAction.action_description = "\n\n".join(part for part in schedule_parts if part)
-        action_manager = get_action_manager()
-        action_manager.clear_schema_cache("dfc_kokoro_bridge:action:set_reply_wait")
-        action_manager.clear_schema_cache("dfc_kokoro_bridge:action:schedule_thought")
+        clear_schema_cache("dfc_kokoro_bridge:action:set_reply_wait")
+        clear_schema_cache("dfc_kokoro_bridge:action:schedule_thought")
 
     async def on_plugin_unloaded(self) -> None:
         """插件卸载时移除调度任务。"""

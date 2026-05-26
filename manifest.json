@@ -1,8 +1,12 @@
 {
   "name": "dfc_kokoro_bridge",
+  "display_name": "DFC 心理增强桥接",
   "version": "1.0.0",
   "description": "为 default_chatter 提供 KFC 风格的私聊心理状态、回复等待、预约思考与主动唤醒",
-  "author": "MoFox Team",
+  "author": "言柒",
+  "license": "AGPL-v3.0",
+  "categories": ["chat"],
+  "tags": ["default_chatter", "kokoro", "private_chat", "mental_state", "bridge"],
   "dependencies": {
     "plugins": [
       "default_chatter"
@@ -15,30 +19,34 @@
     {
       "component_type": "action",
       "component_name": "schedule_thought",
-      "dependencies": [],
-      "enabled": true
+      "dependencies": []
     },
     {
       "component_type": "action",
       "component_name": "set_reply_wait",
-      "dependencies": [],
-      "enabled": true
+      "dependencies": []
     },
     {
       "component_type": "event_handler",
       "component_name": "dfc_kokoro_message_observer",
-      "dependencies": [],
-      "enabled": true
+      "dependencies": []
+    },
+    {
+      "component_type": "event_handler",
+      "component_name": "dfc_kokoro_prompt_state_injector",
+      "dependencies": []
     },
     {
       "component_type": "service",
       "component_name": "dfc_kokoro_state",
-      "dependencies": [],
-      "enabled": true
+      "dependencies": []
+    },
+    {
+      "component_type": "config",
+      "component_name": "config",
+      "dependencies": []
     }
   ],
   "entry_point": "plugin.py",
-  "min_core_version": "1.0.0",
-  "python_dependencies": [],
-  "dependencies_required": false
+  "min_core_version": "1.0.0"
 }
